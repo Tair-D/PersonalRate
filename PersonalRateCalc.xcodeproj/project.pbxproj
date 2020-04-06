@@ -14,6 +14,7 @@
 		BB5D6E7C2434A19900DA5E20 /* RateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5D6E7B2434A19900DA5E20 /* RateCell.swift */; };
 		BB8004AA243360B300B4DC05 /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8004A9243360B300B4DC05 /* RateViewController.swift */; };
 		BB8004AC243360CE00B4DC05 /* CalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8004AB243360CE00B4DC05 /* CalcViewController.swift */; };
+		BBDC2C01243B7E8B005FCB55 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDC2C00243B7E8A005FCB55 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		BB5D6E7B2434A19900DA5E20 /* RateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCell.swift; sourceTree = "<group>"; };
 		BB8004A9243360B300B4DC05 /* RateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
 		BB8004AB243360CE00B4DC05 /* CalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcViewController.swift; sourceTree = "<group>"; };
+		BBDC2C00243B7E8A005FCB55 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		BB2D164224321C9300418828 /* PersonalRateCalc */ = {
 			isa = PBXGroup;
 			children = (
+				BBDC2BFF243B7E4A005FCB55 /* Extensions */,
 				BB5D6E7D2434A21500DA5E20 /* Rate */,
 				BB2D164324321C9300418828 /* AppDelegate.swift */,
 				BB2D164524321C9300418828 /* SceneDelegate.swift */,
@@ -76,6 +79,14 @@
 				BB5D6E7B2434A19900DA5E20 /* RateCell.swift */,
 			);
 			path = Rate;
+			sourceTree = "<group>";
+		};
+		BBDC2BFF243B7E4A005FCB55 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BBDC2C00243B7E8A005FCB55 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBDC2C01243B7E8B005FCB55 /* UIViewExtension.swift in Sources */,
 				BB8004AA243360B300B4DC05 /* RateViewController.swift in Sources */,
 				BB5D6E7C2434A19900DA5E20 /* RateCell.swift in Sources */,
 				BB8004AC243360CE00B4DC05 /* CalcViewController.swift in Sources */,
