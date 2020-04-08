@@ -18,33 +18,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     guard let windowScene = (scene as? UIWindowScene) else { return }
     
-    let rateNC = UINavigationController(rootViewController: RateViewController())
-    let calcNC = UINavigationController(rootViewController: CalcViewController())
-    
-    let tabBar = UITabBarController()
-    
-    tabBar.viewControllers = [rateNC, calcNC]
-    
     window = UIWindow(frame: windowScene.coordinateSpace.bounds)
     window?.windowScene = windowScene
-    window?.rootViewController = tabBar
+    window?.rootViewController = createTabbar()
     window?.makeKeyAndVisible()
   }
 
-  func createRateNavigationController() -> UINavigationController {
+  func createRateNC() -> UINavigationController {
     let rateVC = RateViewController()
-    rateVC.title = "rate"
-    rateVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-    
+    rateVC.title = Rate.navTitle
+    rateVC.tabBarItem.image = #imageLiteral(resourceName: "exchangeRate")
+    rateVC.tabBarItem.tag = 0
     return UINavigationController(rootViewController: rateVC)
   }
   
-  func createCalcNavigationController() -> UINavigationController {
+  func createCalcNC() -> UINavigationController {
     let calcVC = CalcViewController()
-    calcVC.title = "Calculate"
-    calcVC.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
-    
+    calcVC.title = Calc.navTitle
+    calcVC.tabBarItem.image = #imageLiteral(resourceName: "icons8-calculator-60")
+    calcVC.tabBarItem.tag = 1
     return UINavigationController(rootViewController: calcVC)
+  }
+  
+  func createTabbar() -> UITabBarController {
+    let tabBar = UITabBarController()
+    UITabBar.appearance().tintColor = .systemGreen
+    tabBar.viewControllers = [createRateNC(), createCalcNC()]
+    return tabBar
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {
