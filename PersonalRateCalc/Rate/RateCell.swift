@@ -10,75 +10,78 @@ import UIKit
 
 class RateCell: UICollectionViewCell {
   
+  //MARK: - Properties
   private lazy var purchaseLabel: UILabel = {
     let label = UILabel()
-//    label.font = .systemFont(ofSize: 22)
-    label.textColor = .black
-    label.text = "500"
-    label.font = UIFont(name: "Abel", size: 22)
+    label.font = Fonts.rateContent
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
   
-  private lazy var flagImage: UIImage = {
-    let img = UIImage()
-    return img
+  private lazy var flagImageView: UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    return imageView
   }()
   
   private lazy var currencyLabel: UILabel = {
     let label = UILabel()
-    
-    label.text = "USD"
-    label.font = UIFont(name: "Abel", size: 22)
-    label.textColor = .black
+    label.font = Fonts.rateContent
     label.translatesAutoresizingMaskIntoConstraints = false
-    
     return label
   }()
   
   private lazy var saleLabel: UILabel = {
     let label = UILabel()
-    label.text = "111"
-    label.font = UIFont(name: "Abel", size: 22)
-    label.textColor = .black
+    label.font = Fonts.rateContent
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
   
   override init(frame: CGRect) {
     super.init(frame: .zero)
-    
-    addSubview(purchaseLabel)
-    addSubview(currencyLabel)
-    addSubview(saleLabel)
-    
-    purchaseLabel.topAnchor.constraint(equalTo: topAnchor, constant: 14).isActive = true
-    purchaseLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14).isActive = true
-    purchaseLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22).isActive = true
-//    purchaseLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 62).isActive = true
-    
-    
-    currencyLabel.topAnchor.constraint(equalTo: topAnchor, constant: 14).isActive = true
-    currencyLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14).isActive = true
-//    currencyLabel.leadingAnchor.constraint(equalTo: purchaseLabel.leadingAnchor, constant: 116).isActive = true
-//    currencyLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-    currencyLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-//    currencyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 62).isActive = true
-    
-    saleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 14).isActive = true
-    saleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14).isActive = true
-    saleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -45).isActive = true
-    
+    setupViews()
+    setupConstraints()
+  }
+  
+  //MARK: - Setups
+  
+  private func setupViews() {
+    [purchaseLabel, currencyLabel, saleLabel, flagImageView].forEach{ addSubview($0) }
+  }
+  
+  private func setupConstraints() {
+    NSLayoutConstraint.activate([
+      purchaseLabel.topAnchor.constraint(equalTo: topAnchor, constant: 14.0),
+      purchaseLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14.0),
+      purchaseLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30.0),
+      
+      currencyLabel.topAnchor.constraint(equalTo: topAnchor, constant: 14.0),
+      currencyLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14.0),
+      currencyLabel.leadingAnchor.constraint(equalTo: purchaseLabel.leadingAnchor, constant: 175),
+      
+      saleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 14.0),
+      saleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14.0),
+      saleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -45.0),
+      
+      flagImageView.topAnchor.constraint(equalTo: topAnchor, constant: 14.0),
+      flagImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14.0),
+      flagImageView.widthAnchor.constraint(equalToConstant: 20),
+      flagImageView.heightAnchor.constraint(equalToConstant: 20),
+      flagImageView.trailingAnchor.constraint(equalTo: currencyLabel.leadingAnchor, constant: -10.0),
+    ])
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func setup(purchaseValue: String, currencyValue: String, saleValue: String) {
+  func setup(purchaseValue: String, currencyValue: String, saleValue: String, imgName: String) {
     self.purchaseLabel.text = purchaseValue
     self.currencyLabel.text = currencyValue
     self.saleLabel.text = saleValue
+    
+    self.flagImageView.image = UIImage(named: imgName)
   }
   
 }
